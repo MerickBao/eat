@@ -1,4 +1,10 @@
+import 'package:eat/Screens/Login/login_screen.dart';
+import 'package:eat/components/rounded_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../constants.dart';
+import 'background.dart';
 
 class Body extends StatelessWidget {
   String get assets => null;
@@ -8,31 +14,50 @@ class Body extends StatelessWidget {
     //提供屏幕的长和宽
     Size size = MediaQuery.of(context).size;
 
-    return Container(
-      height: size.height,
-      width: size.width,
-      child: Stack(
-        alignment: Alignment.center, //组件的默认分配位置
-        children: [
-          Positioned(
-            //控制组件在Stack中的位置
-            top: 0, //距离该方向的大小
-            left: 0,
-            child: Image.asset(
-              "assets/images/main_top.png",
-              width: size.width * 0.3, //图片的宽
+    return Background(
+      child: SingleChildScrollView(
+        //SingleChildScrollView:A box in which a single widget can be scrolled.
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "WELCOME TO EDU",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/main_bottom.png",
-              width: size.width * 0.3,
+            SizedBox(
+              height: size.height * 0.05,
             ),
-          ),
-        ],
+            SvgPicture.asset(
+              "assets/icons/chat.svg",
+              height: size.height * 0.45,
+            ),
+            SizedBox(
+              height: size.height * 0.05,
+            ),
+            RoundedButton(
+              text: "LOGIN",
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+            RoundedButton(
+              text: "LOGIN",
+              textColor: Colors.black,
+              color: kPrimaryLightColor,
+              press: () {},
+            )
+          ],
+        ),
       ),
     );
   }
 }
+
+// ctrl + . 可以快速将容器转化为widget
