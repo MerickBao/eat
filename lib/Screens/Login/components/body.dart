@@ -16,48 +16,58 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Background(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "LOGIN",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          SvgPicture.asset(
-            "assets/icons/login.svg",
-            height: size.height * 0.3,
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          RoundedInputField(
-            icon: Icons.person,
-            hintText: "Your Email",
-            onChange: (value) {},
-          ),
-          RoundedPasswordField(
-            onChanged: (value) {},
-          ),
-          RoundedButton(
-            text: "LOGIN",
-            press: () {},
-          ),
-          AlreadyAnAccountCheck(
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SignUpScreen(); //跳转到注册页面
-                  },
+      child: Expanded(
+        child: ListView(children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "LOGIN",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
                 ),
-              );
-            },
-          ),
-        ],
+              ),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+              SvgPicture.asset(
+                "assets/icons/login.svg",
+                height: size.height * 0.3,
+              ),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+              RoundedInputField(
+                icon: Icons.person,
+                hintText: "Your Email",
+                onChange: (value) {},
+              ),
+              RoundedPasswordField(
+                onChanged: (value) {},
+              ),
+              RoundedButton(
+                text: "LOGIN",
+                press: () {},
+              ),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+              AlreadyAnAccountCheck(
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SignUpScreen(); //跳转到注册页面
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          )
+        ]),
       ),
     );
   }
