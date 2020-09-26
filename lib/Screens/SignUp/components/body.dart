@@ -7,11 +7,21 @@ import 'package:eat/components/text_field_container.dart';
 import 'package:eat/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:dio/dio.dart';
 
 class Body extends StatelessWidget {
   const Body({
     Key key,
   }) : super(key: key);
+
+  void getHttp() async {
+    try {
+      Response response = await Dio().get("http://www.baidu.com");
+      print(response);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +58,7 @@ class Body extends StatelessWidget {
                 text: "SIGNUP",
                 color: kPrimaryColor,
                 textColor: Colors.white,
-                press: () {},
+                press: this.getHttp,
               ),
               SizedBox(
                 height: 10,
